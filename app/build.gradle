@@ -1,0 +1,124 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.android.extensions'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "divyansh.tech.kdrama"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
+
+    // test dependencies
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$junit_ext"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
+
+    //fragment
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+
+    // Coroutine Lifecycle Scopes
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_viewModels"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_viewModels"
+    implementation "androidx.lifecycle:lifecycle-service:$lifecycle_viewModels"
+
+    // dagger hilt
+    api "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    // dagger for viewmodel
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$dagger_viewModels"
+    kapt "androidx.hilt:hilt-compiler:$dagger_compiler"
+
+    // image loading
+    implementation "com.github.bumptech.glide:glide:$glide"
+    kapt "com.github.bumptech.glide:compiler:$glide"
+
+    // exoplayer
+    implementation (
+            "com.google.android.exoplayer:exoplayer:$exoplayer",
+            "com.google.android.exoplayer:extension-mediasession:$exoplayer",
+            "com.google.android.exoplayer:exoplayer-core:$exoplayer",
+            "com.google.android.exoplayer:exoplayer-dash:$exoplayer",
+            "com.google.android.exoplayer:exoplayer-ui:$exoplayer",
+            "com.google.android.exoplayer:exoplayer-smoothstreaming:$exoplayer"
+    )
+
+    // epoxy
+    implementation "com.airbnb.android:epoxy:$epoxyVersion"
+    implementation "com.airbnb.android:epoxy-databinding:$epoxyVersion"
+    kapt "com.airbnb.android:epoxy-processor:$epoxyVersion"
+
+    // dagger hilt
+    api "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    // Coroutines
+    api(
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+    )
+
+    // Preference DataStore
+    implementation "androidx.datastore:datastore-preferences:$pref_dataStore"
+
+    // retrofit and moshi
+    api(
+            "com.squareup.retrofit2:converter-gson:$gson",
+            "com.squareup.retrofit2:retrofit:$retrofit"
+    )
+
+    implementation "org.jsoup:jsoup:$jsoup"
+}
