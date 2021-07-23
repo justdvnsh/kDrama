@@ -2,5 +2,5 @@ package divyansh.tech.kdrama.common
 
 import androidx.lifecycle.ViewModel
 
-class CommonViewModel: ViewModel() {
+abstract class CommonViewModel: ViewModel() {
 }
